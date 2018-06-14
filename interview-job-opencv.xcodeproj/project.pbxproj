@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		528E4A1C20D246370037CAD2 /* libglui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 528E4A1B20D246370037CAD2 /* libglui.a */; };
 		74D8FF6420D2393F00A26B20 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8FF6320D2393F00A26B20 /* main.cpp */; };
 		74D8FF6C20D2401400A26B20 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8FF6B20D2401400A26B20 /* GLUT.framework */; };
 		74D8FF6E20D2401B00A26B20 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8FF6D20D2401B00A26B20 /* OpenGL.framework */; };
@@ -25,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		528E4A1B20D246370037CAD2 /* libglui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglui.a; path = ../../../../usr/local/Cellar/glui/2.36/lib/libglui.a; sourceTree = "<group>"; };
 		74D8FF6020D2393F00A26B20 /* interview-job-opencv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "interview-job-opencv"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D8FF6320D2393F00A26B20 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74D8FF6B20D2401400A26B20 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -38,6 +40,7 @@
 			files = (
 				74D8FF6E20D2401B00A26B20 /* OpenGL.framework in Frameworks */,
 				74D8FF6C20D2401400A26B20 /* GLUT.framework in Frameworks */,
+				528E4A1C20D246370037CAD2 /* libglui.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +75,7 @@
 		74D8FF6A20D2401400A26B20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				528E4A1B20D246370037CAD2 /* libglui.a */,
 				74D8FF6D20D2401B00A26B20 /* OpenGL.framework */,
 				74D8FF6B20D2401400A26B20 /* GLUT.framework */,
 			);
@@ -254,8 +258,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/glui/2.36/include/GL,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glui/2.36/lib,
+				);
 				OTHER_LDFLAGS = (
 					"-I/usr/local/Cellar/opencv/3.4.1_2/include/opencv",
 					"-I/usr/local/Cellar/opencv/3.4.1_2/include",
@@ -401,8 +411,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/glui/2.36/include/GL,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/Cellar/glui/2.36/lib,
+				);
 				OTHER_LDFLAGS = (
 					"-I/usr/local/Cellar/opencv/3.4.1_2/include/opencv",
 					"-I/usr/local/Cellar/opencv/3.4.1_2/include",
