@@ -3,57 +3,23 @@
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
+using namespace std;
 
-/// Global Variables
-const int alpha_slider_max = 100;
-int alpha_slider;
-double alpha;
-double beta;
 
-/// Matrices to store images
-Mat src1;
-Mat src2;
-Mat dst;
-
-/**
- * @function on_trackbar
- * @brief Callback for trackbar
- */
-void on_trackbar( int, void* )
-{
-    alpha = (double) alpha_slider/alpha_slider_max ;
-    beta = ( 1.0 - alpha );
+int main() {
+    VideoCapture stream1(0);   //0 is the id of video device.0 if you have only one camera.
     
-    addWeighted( src1, alpha, src2, beta, 0.0, dst);
+    if (!stream1.isOpened()) { //check if video device has been initialised
+        cout << "cannot open camera";
+    }
     
-    imshow( "Linear Blend", dst );
-}
-
-int main( int argc, char** argv )
-{
-    /// Read image ( same size, same type )
-    src1 = imread("/Users/lucavaquer/Downloads/4184.jpg");
-    src2 = imread("/Users/lucavaquer/Downloads/img_0274.png");
-    
-    if( !src1.data ) { printf("Error loading src1 \n"); return -1; }
-    if( !src2.data ) { printf("Error loading src2 \n"); return -1; }
-    
-    /// Initialize values
-    alpha_slider = 0;
-    
-    /// Create Windows
-    namedWindow("Linear Blend", 1);
-    
-    /// Create Trackbars
-    char TrackbarName[50];
-    sprintf( TrackbarName, "Alpha x %d", alpha_slider_max );
-    
-    createTrackbar( TrackbarName, "Linear Blend", &alpha_slider, alpha_slider_max, on_trackbar );
-    
-    /// Show some stuff
-    on_trackbar( alpha_slider, 0 );
-    
-    /// Wait until user press some key
-    waitKey(0);
+    //unconditional loop
+    while (true) {
+        Mat cameraFrame;
+        stream1.read(cameraFrame);
+        imshow("cam", cameraFrame,  aspect=);
+        if (waitKey(30) >= 0)
+            break;
+    }
     return 0;
 }
