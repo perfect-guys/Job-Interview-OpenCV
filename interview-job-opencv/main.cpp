@@ -6,6 +6,7 @@
 //  Copyright © 2018 JunHee. All rights reserved.
 //
 
+#include <opencv2/opencv.hpp>
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
