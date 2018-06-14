@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		74D8FF6420D2393F00A26B20 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74D8FF6320D2393F00A26B20 /* main.cpp */; };
+		74D8FF6C20D2401400A26B20 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8FF6B20D2401400A26B20 /* GLUT.framework */; };
+		74D8FF6E20D2401B00A26B20 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D8FF6D20D2401B00A26B20 /* OpenGL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		74D8FF6020D2393F00A26B20 /* interview-job-opencv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "interview-job-opencv"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D8FF6320D2393F00A26B20 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		74D8FF6B20D2401400A26B20 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		74D8FF6D20D2401B00A26B20 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D8FF6E20D2401B00A26B20 /* OpenGL.framework in Frameworks */,
+				74D8FF6C20D2401400A26B20 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 			children = (
 				74D8FF6220D2393F00A26B20 /* interview-job-opencv */,
 				74D8FF6120D2393F00A26B20 /* Products */,
+				74D8FF6A20D2401400A26B20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +67,15 @@
 				74D8FF6320D2393F00A26B20 /* main.cpp */,
 			);
 			path = "interview-job-opencv";
+			sourceTree = "<group>";
+		};
+		74D8FF6A20D2401400A26B20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				74D8FF6D20D2401B00A26B20 /* OpenGL.framework */,
+				74D8FF6B20D2401400A26B20 /* GLUT.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
