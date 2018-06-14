@@ -1,5 +1,4 @@
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+
 #include <opencv2/opencv.hpp>
 
 using namespace cv;
@@ -17,7 +16,7 @@ int main() {
     while (true) {
         Mat cameraFrame;
         stream1.read(cameraFrame);
-        imshow("cam", cameraFrame,  aspect=);
+        imshow("cam", cameraFrame);
         if (waitKey(30) >= 0)
             break;
     }
