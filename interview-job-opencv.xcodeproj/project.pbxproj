@@ -27,6 +27,8 @@
 
 /* Begin PBXFileReference section */
 		528E4A1B20D246370037CAD2 /* libglui.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglui.a; path = ../../../../usr/local/Cellar/glui/2.36/lib/libglui.a; sourceTree = "<group>"; };
+		528E4A4020D253350037CAD2 /* 4184.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 4184.jpg; path = ../../../Downloads/4184.jpg; sourceTree = "<group>"; };
+		528E4A4120D253390037CAD2 /* img_0274.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_0274.png; path = ../../../Downloads/img_0274.png; sourceTree = "<group>"; };
 		74D8FF6020D2393F00A26B20 /* interview-job-opencv */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "interview-job-opencv"; sourceTree = BUILT_PRODUCTS_DIR; };
 		74D8FF6320D2393F00A26B20 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		74D8FF6B20D2401400A26B20 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -68,6 +70,8 @@
 			isa = PBXGroup;
 			children = (
 				74D8FF6320D2393F00A26B20 /* main.cpp */,
+				528E4A4020D253350037CAD2 /* 4184.jpg */,
+				528E4A4120D253390037CAD2 /* img_0274.png */,
 			);
 			path = "interview-job-opencv";
 			sourceTree = "<group>";
