@@ -39,7 +39,6 @@ int main(){
     
     Mat frame[2], residue;
     namedWindow("camera", 1);
-    namedWindow("residue", 1);
     cap >> frame[1];
     cvtColor(frame[1], frame[1], COLOR_BGR2BGRA);
     pyrDown(frame[1], frame[1]);
@@ -55,66 +54,45 @@ int main(){
         getchar();
     }
     
-    // create tracker
-    //    Ptr<Tracker> tracker = Tracker::create();
-    
-    
     
     //  main process
-    bool is_tracking = false;
     Rect box;
-    
     for(int i=0; waitKey(1) != 27; i=!i){
-        double start = getTickCount(); //to count the period the process takes
         
         cap >> frame[i];
         cvtColor(frame[i], frame[i], COLOR_BGR2BGRA);
         pyrDown(frame[i], frame[i]);
-        //equalizeHist(frame[i], frame[i]);
+        
         residue = frame[i] - frame[!i];
         
-        //thresholdAndOpen(residue, residue);
-        //thresholdInRange(residue, residue);
-        //        if(!is_tracking){
         vector<Rect> eyes = detectEyeAndFace(frame[i]);
-        //            if(eyes.size()){
-        //                box = eyes[0];
-        //                tracker->init(frame[i], box);
-        //                is_tracking = true;
-        //            }
-        //        }
         
-        
-        
-        //        rectangle(frame[i], box, 255, 3);
         for(size_t j=0; j<eyes.size(); j++){
             rectangle(frame[i], eyes[j], 255, 3);
             isRectangle = true;
-            
         }
         
         if (!isRectangle && checkAllowed == true){
             blinkCount++;
             checkAllowed = false;
         }
+        
         cout << blinkCount << "\n";
         imshow("camera", frame[i]);
         isRectangle = false;
-            flag++;
+        flag++;
         if (flag > 5){
             flag = 0;
             checkAllowed = true;
         }
-        //imshow("residue", residue);
         
-//        cout << ((getTickCount() - start) / getTickFrequency()) * 1000 << endl; //output the time the process takes
     }
 }
 
 void thresholdAndOpen(Mat src, Mat dst){
     threshold(src, dst, 10, 255, THRESH_BINARY);
     int maskSize = 5;
-//    threshold(residue, residue, 255, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY, maskSize, 0);
+    
     Mat ele = getStructuringElement(MORPH_ELLIPSE, Size(maskSize, maskSize));
     morphologyEx(src, dst, MORPH_OPEN, ele);
 }
