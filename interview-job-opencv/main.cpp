@@ -24,6 +24,10 @@ String face_cascade_name = inputDir + "haarcascade_frontalface_alt.xml";
 String eyes_cascade_name = inputDir + "haarcascade_eye_tree_eyeglasses.xml";
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
+int blinkCount = 0;
+bool isRectangle;
+bool checkAllowed = true;
+int flag = 0;
 
 void thresholdAndOpen(Mat src, Mat dst); //threshold and consequent bluring operation
 void thresholdInRange(Mat src, Mat dst); //figure out the range of the eye_blink_diff
@@ -90,10 +94,22 @@ int main(){
         //        rectangle(frame[i], box, 255, 3);
         for(size_t j=0; j<eyes.size(); j++){
             rectangle(frame[i], eyes[j], 255, 3);
-            cout<< "tt";
+            isRectangle = true;
+            
         }
         
+        if (!isRectangle && checkAllowed == true){
+            blinkCount++;
+            checkAllowed = false;
+        }
+        cout << blinkCount << "\n";
         imshow("camera", frame[i]);
+        isRectangle = false;
+            flag++;
+        if (flag > 5){
+            flag = 0;
+            checkAllowed = true;
+        }
         //imshow("residue", residue);
         
 //        cout << ((getTickCount() - start) / getTickFrequency()) * 1000 << endl; //output the time the process takes
