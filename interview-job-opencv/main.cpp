@@ -1,9 +1,4 @@
-//  main.cpp
-//  blink_counter
-//
-//  Created by AndyWu on 17/08/2017.
-//  Copyright © 2017 AndyWu. All rights reserved.
-//
+//Perfect guys Job Interview project
 
 #include <iostream>
 #include <opencv2/objdetect/objdetect.hpp>
@@ -46,7 +41,7 @@ int main(){
     namedWindow("camera", 1);
     namedWindow("residue", 1);
     cap >> frame[1];
-    cvtColor(frame[1], frame[1], COLOR_BGR2GRAY);
+    cvtColor(frame[1], frame[1], COLOR_BGR2BGRA);
     pyrDown(frame[1], frame[1]);
     cout << frame[1].size[0] << endl << frame[1].size[1] << endl;
     
@@ -73,7 +68,7 @@ int main(){
         double start = getTickCount(); //to count the period the process takes
         
         cap >> frame[i];
-        cvtColor(frame[i], frame[i], COLOR_BGR2GRAY);
+        cvtColor(frame[i], frame[i], COLOR_BGR2BGRA);
         pyrDown(frame[i], frame[i]);
         //equalizeHist(frame[i], frame[i]);
         residue = frame[i] - frame[!i];
