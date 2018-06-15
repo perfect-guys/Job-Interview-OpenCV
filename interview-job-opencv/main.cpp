@@ -1,9 +1,4 @@
-//  main.cpp
-//  blink_counter
-//
-//  Created by AndyWu on 17/08/2017.
-//  Copyright © 2017 AndyWu. All rights reserved.
-//
+//Perfect guys Job Interview project
 
 #include <iostream>
 #include <opencv2/objdetect/objdetect.hpp>
