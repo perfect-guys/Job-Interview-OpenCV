@@ -10,6 +10,7 @@
 #include <opencv2/core/utility.hpp>
 #include <opencv2/tracking.hpp>
 #include <fstream>
+#include "opencv2/opencv.hpp"
 
 using namespace std;
 using namespace cv;
@@ -23,28 +24,16 @@ int blinkCount = 0;
 bool isRectangle;
 bool checkAllowed = true;
 int flag = 0;
-
 void thresholdAndOpen(Mat src, Mat dst); //threshold and consequent bluring operation
 void thresholdInRange(Mat src, Mat dst); //figure out the range of the eye_blink_diff
 vector<Rect> detectEyeAndFace(Mat src);
 
+
 int main(){
-    VideoCapture cap;
-    cap.open(0);
+    cout<<"Initialize OpenCL runtime..." << "\n";
+    cout<<"Blink count"<< "\n";
     
-    if(!cap.isOpened()){
-        cout << "fail to open camera" << endl;
-        return -1;
-    }
-    
-    Mat frame[2], residue;
-    namedWindow("camera", 1);
-    cap >> frame[1];
-    cvtColor(frame[1], frame[1], COLOR_BGR2BGRA);
-    pyrDown(frame[1], frame[1]);
-    cout << frame[1].size[0] << endl << frame[1].size[1] << endl;
-    
-    //  init face and eye casacade
+    //load algorithm
     if( !face_cascade.load( face_cascade_name ) ){
         printf("face_cascade_name failed to load...\n");
         getchar();
@@ -54,19 +43,31 @@ int main(){
         getchar();
     }
     
+    VideoCapture cap(0);
+    cap.open(0);
+    
+    if(!cap.isOpened()){
+        cout << "fail to open camera" << endl;
+        return -1;
+    }
+    
+    Mat frame[2];
+    
     
     //  main process
     Rect box;
+    
     for(int i=0; waitKey(1) != 27; i=!i){
         
         cap >> frame[i];
+
+        //frame size
         cvtColor(frame[i], frame[i], COLOR_BGR2BGRA);
         pyrDown(frame[i], frame[i]);
         
-        residue = frame[i] - frame[!i];
-        
+    
+        // count eye blinks
         vector<Rect> eyes = detectEyeAndFace(frame[i]);
-        
         for(size_t j=0; j<eyes.size(); j++){
             rectangle(frame[i], eyes[j], 255, 3);
             isRectangle = true;
@@ -77,8 +78,6 @@ int main(){
             checkAllowed = false;
         }
         
-        cout << blinkCount << "\n";
-        imshow("camera", frame[i]);
         isRectangle = false;
         flag++;
         if (flag > 5){
@@ -86,8 +85,27 @@ int main(){
             checkAllowed = true;
         }
         
+        // int to string for blink count
+        stringstream str_blinkCount;
+        str_blinkCount << blinkCount;
+        string str = str_blinkCount.str();
+        String strBlinkCnt = "BLINK COUNT : " + str;
+        
+       
+        // test for eye blink on the display
+        Point blinkCountPoint = Point(50, 320);
+        int fontFace = FONT_ITALIC;
+        double fontScale = 1;
+        Scalar fontColor = Scalar(250, 0, 0);
+        int fontThinkness = 3;
+        cv::putText(frame[i], strBlinkCnt,blinkCountPoint , fontFace, fontScale, fontColor , fontThinkness, true);
+        
+        // show frame
+        imshow("camera", frame[i]);
     }
+    
 }
+
 
 void thresholdAndOpen(Mat src, Mat dst){
     threshold(src, dst, 10, 255, THRESH_BINARY);
@@ -118,7 +136,6 @@ vector<Rect> detectEyeAndFace(Mat src){
         for( size_t j = 0; j < eyes.size(); j++)
             eyes[j] += faces[i].tl();
     }
-    
     return eyes;
 }
 
