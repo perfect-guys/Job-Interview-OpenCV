@@ -249,6 +249,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					/usr/local/Cellar/glui/2.36/include/GL,
+					"/usr/local/Cellar/dlib-19.13",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
@@ -402,6 +403,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include,
 					/usr/local/Cellar/glui/2.36/include/GL,
+					"/usr/local/Cellar/dlib-19.13",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/lib,
